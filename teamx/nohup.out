@@ -1,0 +1,206 @@
+Unstructured grid file already exists: /data/trade_pc/ICON/icon_teamx/domain/unstructured_grid_teamx.nc
+Weights file already exists: /data/trade_pc/ICON/icon_teamx/domain/weights_500m_teamx.nc
+Processing ilf3f00000000.gz ...
+cdo    remap (Warning): Reference to horizontal grid not available!
+
+cdo    remap (Abort): Reference to source grid not found!
+Error converting ilf3f00000000.gz — skipping.
+Processing ilf3f00010000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945686)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00010000.nc
+Processing ilf3f00020000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945620)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00020000.nc
+Processing ilf3f00030000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945574)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00030000.nc
+Processing ilf3f00040000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945455)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00040000.nc
+Processing ilf3f00050000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945443)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00050000.nc
+Processing ilf3f00060000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945406)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00060000.nc
+Processing ilf3f00070000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945429)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00070000.nc
+Processing ilf3f00080000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945562)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00080000.nc
+Processing ilf3f00090000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945772)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00090000.nc
+Processing ilf3f00100000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945859)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00100000.nc
+Processing ilf3f00110000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945877)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00110000.nc
+Processing ilf3f00120000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945903)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00120000.nc
+Processing ilf3f00130000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945895)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00130000.nc
+Processing ilf3f00140000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945753)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00140000.nc
+Skipping ilf3f00150000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00150000.nc exists)
+Skipping ilf3f00160000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00160000.nc exists)
+Skipping ilf3f00170000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00170000.nc exists)
+Skipping ilf3f00180000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00180000.nc exists)
+Skipping ilf3f00190000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00190000.nc exists)
+Skipping ilf3f00200000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00200000.nc exists)
+Skipping ilf3f00210000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00210000.nc exists)
+Skipping ilf3f00220000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00220000.nc exists)
+Skipping ilf3f00230000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f00230000.nc exists)
+Skipping ilf3f01000000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01000000.nc exists)
+Skipping ilf3f01010000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01010000.nc exists)
+Skipping ilf3f01020000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01020000.nc exists)
+Skipping ilf3f01030000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01030000.nc exists)
+Skipping ilf3f01040000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01040000.nc exists)
+Skipping ilf3f01050000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01050000.nc exists)
+Skipping ilf3f01060000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01060000.nc exists)
+Skipping ilf3f01070000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01070000.nc exists)
+Skipping ilf3f01080000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01080000.nc exists)
+Skipping ilf3f01090000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01090000.nc exists)
+Skipping ilf3f01100000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01100000.nc exists)
+Skipping ilf3f01110000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01110000.nc exists)
+Skipping ilf3f01120000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01120000.nc exists)
+Skipping ilf3f01130000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01130000.nc exists)
+Processing ilf3f01140000.gz ...
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lsrr' to 'lsrr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'lssfr' to 'lssfr_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'u' to 'u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'v' to 'v_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 't' to 't_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name 'nswrf' to 'nswrf_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10u' to '10u_2'!
+cdi  warning (cdfCheckVarname): Changed double entry of variable name '10v' to '10v_2'!
+cdo    remap: Nearest neighbor weights from unstructured (945940) to lonlat (1778x723) grid, with source mask (945834)
+Created /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01140000.nc
+Skipping ilf3f01150000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01150000.nc exists)
+Skipping ilf3f01160000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01160000.nc exists)
+Skipping ilf3f01170000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01170000.nc exists)
+Skipping ilf3f01180000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01180000.nc exists)
+Skipping ilf3f01190000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01190000.nc exists)
+Skipping ilf3f01200000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01200000.nc exists)
+Skipping ilf3f01210000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01210000.nc exists)
+Skipping ilf3f01220000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01220000.nc exists)
+Skipping ilf3f01230000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f01230000.nc exists)
+Skipping ilf3f02000000.gz (already processed: /data/trade_pc/ICON/icon_teamx/20250630_00/nc/ilf3f02000000.nc exists)
+All files processed successfully.

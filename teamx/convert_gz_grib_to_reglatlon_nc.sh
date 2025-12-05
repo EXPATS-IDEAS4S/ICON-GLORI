@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # === USER SETTINGS ===
-FOLDER="/work/dcorradi/icon_output/teamx/acinn-data.uibk.ac.at/20250630_00"
-GRID_FOLDER="/work/dcorradi/icon_output/teamx/acinn-data.uibk.ac.at/domain"
+FOLDER="/data/trade_pc/ICON/icon_teamx/20250630_00"
+GRID_FOLDER="/data/trade_pc/ICON/icon_teamx/domain"
 GRIB_DIR="$FOLDER/grib"
 NC_DIR="$FOLDER/nc"
-GRID_FILE="$GRID_FOLDER/grid_500m.txt"         # Target lat-lon grid description (TEAMX 500m grid file)
-WEIGHTS_FILE="$GRID_FOLDER/weights_500m.nc"    # Weight file for regridding
-GRID_INFO_FILE="$GRID_FOLDER/domain2_DOM02.nc" # ICON domain file
-UNSTRUCTURED_GRID="$GRID_FOLDER/unstructured_grid.nc"
+GRID_FILE="$GRID_FOLDER/grid_500m_teamx.txt"         # Target lat-lon grid description (TEAMX 500m grid file)
+WEIGHTS_FILE="$GRID_FOLDER/weights_500m_teamx.nc"    # Weight file for regridding
+GRID_INFO_FILE="$GRID_FOLDER/domain2_DOM02.nc"       # ICON domain file
+UNSTRUCTURED_GRID="$GRID_FOLDER/unstructured_grid_teamx.nc"
 
 # Create output folder if missing
 mkdir -p "$NC_DIR"
@@ -36,6 +36,13 @@ fi
 for gzfile in *.gz; do
     [ -e "$gzfile" ] || continue
     base="${gzfile%.gz}"
+    final_nc="$NC_DIR/${base}.nc"
+
+    # Check if already processed
+    if [ -f "$final_nc" ]; then
+        echo "Skipping $gzfile (already processed: $final_nc exists)"
+        continue
+    fi
 
     echo "Processing $gzfile ..."
 
@@ -49,7 +56,7 @@ for gzfile in *.gz; do
     cdo setgrid,"$UNSTRUCTURED_GRID" "${base}.nc" "${base}_grid.nc"
 
     # 4. Remap to target grid
-    cdo -P 4 remap,"$GRID_FILE","$WEIGHTS_FILE" "${base}_grid.nc" "$NC_DIR/${base}.nc"
+    cdo -P 4 remap,"$GRID_FILE","$WEIGHTS_FILE" "${base}_grid.nc" "$final_nc"
     if [ $? -ne 0 ]; then
         echo "Error converting $gzfile — skipping."
         rm -f "$base" "${base}.nc" "${base}_grid.nc"
@@ -58,8 +65,8 @@ for gzfile in *.gz; do
 
     # 5. Cleanup
     rm -f "$base" "${base}.nc" "${base}_grid.nc"
-    echo "Created $NC_DIR/${base}.nc"
+    echo "Created $final_nc"
 done
 
 echo "All files processed successfully."
-
+#2538431

@@ -44,6 +44,7 @@ for item in response['Contents']:
     print(item['Key'])
     count += 1
 print(f"Total objects in bucket: {count}")
+exit()
 
 
 # Pagination to get all objects
