@@ -287,7 +287,7 @@ if debug_list_bucket:
 
 # Directory and source settings
 years = [2025]
-months = range(5, 10)
+months = range(4, 5)
 days = range(1, 32)
 
 icon_basename = "merged_SYNMSG_BT_CL_IR10.8_CLCT"
@@ -297,8 +297,8 @@ msg_path_dir = "/data/sat/msg/ml_train_crops/IR_108-WV_062-CMA_FULL_EXPATS_DOMAI
 msg_basename = "merged_MSG_CMSAF"
 
 # Extent-based cropping settings (lonmin, lonmax, latmin, latmax)
-crop_extent = (7.0, 11.0, 45.0, 49.0) #(11.0, 15.0, 45.0, 49.0) #(9.0, 13.0, 45.0, 49.0)
-domain_name =  'west' #'east' #'central'
+crop_extent = (11.0, 15.0, 45.0, 49.0) #(7.0, 11.0, 45.0, 49.0) #(11.0, 15.0, 45.0, 49.0) #(9.0, 13.0, 45.0, 49.0)
+domain_name =  'east' #'west' #'east' #'central'
 x_pixel = 100
 y_pixel = 100
 
