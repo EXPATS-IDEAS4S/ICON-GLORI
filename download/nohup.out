@@ -1,0 +1,30 @@
+================================================================================
+ICON-GLORI Download & Processing Pipeline
+================================================================================
+Started: Thu Apr  2 19:17:28 UTC 2026
+Log directory: /sat_data/icon/log_con_dowload/20260402
+
+Checking prerequisites...
+✓ All prerequisites met
+
+STEP 1: Skipped (SKIP_DOWNLOAD=true)
+
+STEP 2: Skipped (SKIP_CONVERT=true)
+
+================================================================================
+STEP 3: Merge NetCDF files (3_merge_nc_files.py)
+================================================================================
+✗ Merge failed (check /sat_data/icon/log_con_dowload/20260402/step3_merge.log)
+Stopping pipeline due to error.
+================================================================================
+ICON-GLORI Download & Processing Pipeline
+================================================================================
+Started: Thu Apr  2 19:18:00 UTC 2026
+Log directory: /sat_data/icon/log_con_dowload/20260402
+
+Checking prerequisites...
+✓ All prerequisites met
+
+================================================================================
+STEP 1: Download data from DWD (1_download_d2_eu_dwd.sh)
+================================================================================

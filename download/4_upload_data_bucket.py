@@ -19,8 +19,16 @@ from glob import glob
 import logging
 from botocore.exceptions import ClientError
 
+
+# Default config: read merged files from fixed per-model source directories.
+DEFAULT_ICON_MERGED_DIRS = {
+    "icon_d2": "/sat_data/icon/icon_d2/merged_nc",
+    "icon_eu": "/sat_data/icon/icon_eu/merged_nc",
+}
+
 # Try to import credentials; gracefully handle if file doesn't exist
 try:
+    sys.path.append("/home/Daniele/codes/ICON-GLORI")  # Ensure current directory is in path
     from credentials_buckets import (
         S3_BUCKET_ICON_D2, 
         S3_BUCKET_ICON_EU,
@@ -69,7 +77,7 @@ def upload_file(s3_client, file_path, bucket, object_name=None):
         return False
 
 
-def upload_merged_files(merged_nc_dir="merged_nc"):
+def upload_merged_files(merged_nc_dir=None):
     """
     Upload merged NC files to corresponding S3 buckets.
     
@@ -82,12 +90,22 @@ def upload_merged_files(merged_nc_dir="merged_nc"):
     print("=" * 70)
     print("NetCDF File Upload to S3 Buckets")
     print("=" * 70)
-    print(f"Source directory: {merged_nc_dir}")
+    if merged_nc_dir is None:
+        icon_source_dirs = {
+            icon_type: os.path.abspath(os.path.expanduser(path))
+            for icon_type, path in DEFAULT_ICON_MERGED_DIRS.items()
+        }
+        print("Source directories (default config):")
+        for icon_type, path in icon_source_dirs.items():
+            print(f"  - {icon_type}: {path}")
+    else:
+        merged_nc_dir = os.path.abspath(os.path.expanduser(merged_nc_dir))
+        icon_source_dirs = {
+            "icon_d2": os.path.join(merged_nc_dir, "icon_d2"),
+            "icon_eu": os.path.join(merged_nc_dir, "icon_eu"),
+        }
+        print(f"Source directory: {merged_nc_dir}")
     print()
-    
-    if not os.path.isdir(merged_nc_dir):
-        print(f"ERROR: Directory not found: {merged_nc_dir}")
-        return False
     
     # Initialize S3 client
     s3_client = boto3.client(
@@ -107,7 +125,7 @@ def upload_merged_files(merged_nc_dir="merged_nc"):
     total_failed = 0
     
     for icon_type, bucket_name in bucket_map.items():
-        icon_dir = os.path.join(merged_nc_dir, icon_type)
+        icon_dir = icon_source_dirs[icon_type]
         
         if not os.path.isdir(icon_dir):
             print(f"Directory not found: {icon_dir}")
@@ -165,6 +183,6 @@ def upload_merged_files(merged_nc_dir="merged_nc"):
 
 
 if __name__ == "__main__":
-    merged_dir = sys.argv[1] if len(sys.argv) > 1 else "merged_nc"
+    merged_dir = sys.argv[1] if len(sys.argv) > 1 else None
     success = upload_merged_files(merged_dir)
     sys.exit(0 if success else 1)
