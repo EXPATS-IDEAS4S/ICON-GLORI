@@ -26,8 +26,8 @@ BASE_INPUT_DIRS = {
 }
 
 try:
-    sys.path.append("/home/Daniele/codes/ICON-GLORI")
-    from credentials_buckets import (
+    sys.path.append("/home/Daniele/codes/ICON-GLORI/")
+    from credentials_buckets_old import (
         S3_BUCKET_ICON_D2_CASE_STUDY,
         S3_BUCKET_ICON_EU_CASE_STUDY,
         S3_ACCESS_KEY,

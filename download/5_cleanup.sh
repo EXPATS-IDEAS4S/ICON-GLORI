@@ -21,7 +21,7 @@ LOG_DATE="$(date -u +%Y%m%d)"
 # -------- SETTINGS --------
 GRIB_BASE="/sat_data/icon"
 ICON_TYPES=("icon_d2" "icon_eu")
-LOG_DIR="$SCRIPT_DIR/logs/$LOG_DATE"
+LOG_DIR="/sat_data/icon/log_con_dowload/$LOG_DATE"
 PIPELINE_LOG_DIR="/sat_data/icon/log_con_dowload/$LOG_DATE"
 KEEP_GRIB=false  # Safe default: preserve original GRIB files
 # --------------------------

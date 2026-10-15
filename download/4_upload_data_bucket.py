@@ -28,8 +28,8 @@ DEFAULT_ICON_MERGED_DIRS = {
 
 # Try to import credentials; gracefully handle if file doesn't exist
 try:
-    sys.path.append("/home/Daniele/codes/ICON-GLORI")  # Ensure current directory is in path
-    from credentials_buckets import (
+    sys.path.append("/home/Daniele/codes/ICON-GLORI/")  # Ensure current directory is in path
+    from credentials_buckets_old import (
         S3_BUCKET_ICON_D2, 
         S3_BUCKET_ICON_EU,
         S3_ACCESS_KEY, 

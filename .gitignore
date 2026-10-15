@@ -1,1 +1,18 @@
-s3_bucket_credentials.py
+credentials_buckets.py
+credentials_buckets_old.py
+
+__pycache__/
+
+# TeamX local artifacts
+teamx/logs/
+teamx/plots/
+teamx/*.log
+teamx/wget-log
+teamx/icon_bucket_check_report.txt
+
+# Download script local artifacts
+download/logs/
+
+nohup.out
+
+download/nohup_*.out

@@ -27,8 +27,19 @@
 
 set -e
 
+RUN_DATE="${1:-$(date -u +%Y%m%d)}"
+
+if [[ ! "$RUN_DATE" =~ ^[0-9]{8}$ ]]; then
+    echo "ERROR: RUN_DATE must be YYYYMMDD"
+    exit 1
+fi
+
+RUN_DATE_COMPACT=$(echo "$RUN_DATE" | tr -d '-')
+
+echo "Downloading date: $RUN_DATE"
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LOG_DATE="$(date -u +%Y%m%d)"
+LOG_DATE="$RUN_DATE"
 LOG_DIR="/sat_data/icon/log_con_dowload/$LOG_DATE"
 LOGFILE="$LOG_DIR/download_full.log"
 FAILED_DOWNLOADS_FILE="$LOG_DIR/failed_downloads_full.txt"
@@ -99,6 +110,12 @@ while IFS= read -r url; do
   [ -z "$url" ] && continue
 
   fname=$(basename "$url")
+  file_date=$(echo "$fname" | grep -oE '[0-9]{8}' | head -n1)
+
+  if [ "$file_date" != "$RUN_DATE_COMPACT" ]; then
+      continue
+  fi
+
   var=$(echo "$url" | awk -F'/' '{print $(NF-2)}')
   step=$(echo "$url" | awk -F'/' '{print $(NF-3)}')
   icon_type=$(echo "$url" | awk -F'/' '{for (i=1; i<=NF; i++) if ($i ~ /^icon-(d2|eu)$/) {print $i; exit}}')

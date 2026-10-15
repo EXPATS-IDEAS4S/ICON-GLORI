@@ -4,9 +4,9 @@
 # Format: YYYYMMDD_HH
 
 # Configuration
-START_DATE="20250424"
+START_DATE="20250401"
 END_DATE="20250930"
-INITS=("12")  # Initialization times (00 or 12)
+INITS=("00" "12")  # Initialization times (00 or 12)
 OUTPUT_FILE="date_list.txt"
 
 # Function to display usage

@@ -97,7 +97,7 @@ date = sys.argv[1]
 print(f"Processing date: {date}")
 
 #Directory with the data to upload
-path_dir = f"/sat_data/icon_teamx/nc_tmp/{date}"
+path_dir = f"/sat_data/icon/icon_teamx/nc_tmp/{date}"
 extension = ".nc"  # Change this to the desired file extension
 data_filepattern = f"{path_dir}/*{extension}"   # match all files in all subfolders
 file_list = sorted(glob(data_filepattern, recursive=True))
@@ -105,8 +105,9 @@ file_list = sorted(glob(data_filepattern, recursive=True))
 # List the objects in our bucket
 print(f"Bucket contents before upload:")
 response = s3.list_objects(Bucket=S3_BUCKET_ICON)
-for item in response['Contents']:
-    print(item['Key'])
+if 'Contents' in response:
+    for item in response['Contents']:
+        print(item['Key'])
 
 
 print(f'uploading {len(file_list)} {extension} files')

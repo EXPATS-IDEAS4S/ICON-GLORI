@@ -30,7 +30,7 @@ set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_DATE="$(date -u +%Y%m%d)"
-LOG_DIR="$SCRIPT_DIR/logs/$LOG_DATE"
+LOG_DIR="/sat_data/icon/log_con_dowload/$LOG_DATE"
 LOGFILE="$LOG_DIR/download.log"
 FAILED_DOWNLOADS_FILE="$LOG_DIR/failed_downloads.txt"
 CONTENT_LOG_FILE="$LOG_DIR/content.log.bz2"

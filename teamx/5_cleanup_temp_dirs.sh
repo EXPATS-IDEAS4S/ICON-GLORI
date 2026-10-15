@@ -4,8 +4,8 @@
 # This removes all files and folders from specified temporary directories
 
 # -------- SETTINGS --------
-GRIB_TMP_DIR="/sat_data/icon_teamx/grib_tmp"
-NC_TMP_DIR="/sat_data/icon_teamx/nc_tmp"
+GRIB_TMP_DIR="/sat_data/icon/icon_teamx/grib_tmp"
+NC_TMP_DIR="/sat_data/icon/icon_teamx/nc_tmp"
 # --------------------------
 
 echo "============================================"

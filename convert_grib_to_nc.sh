@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define input and output directories
-input_dir="/data/sat/msg/icon_output/marche_flood_15-09-22/grib"
-output_dir="/data/sat/msg/icon_output/marche_flood_15-09-22/netcdf"
+input_dir="/sat_data/icon/icon_virginia"
+output_dir="/sat_data/icon/icon_virginia"
 file_pattern="*.grb"  # Pattern to match files
 
 # Create output directory if it doesn't exist

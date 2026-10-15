@@ -9,15 +9,16 @@ if [ -z "$1" ]; then
 fi
 
 # === USER SETTINGS ===
-FOLDER="/sat_data/icon_teamx/grib_tmp/$1"
-GRID_FOLDER="/sat_data/icon_teamx/domain"
+FOLDER="/sat_data/icon/icon_teamx/grib_tmp/$1"
+GRID_FOLDER="/sat_data/icon/icon_teamx/domain"
 GRIB_DIR="$FOLDER"
 NC_DIR="$FOLDER/nc_tmp"
-GRID_FILE="$GRID_FOLDER/grid_500m.txt"         # Target lat-lon grid description (TEAMX 500m grid file)
-WEIGHTS_FILE="$GRID_FOLDER/weights_500m.nc"    # Weight file for regridding
+GRID_FILE="$GRID_FOLDER/grid_500m_ACTA.txt"         # Target lat-lon grid description (TEAMX 500m grid file)
+WEIGHTS_FILE="$GRID_FOLDER/weights_500m_ACTA.nc"    # Weight file for regridding
 GRID_INFO_FILE="$GRID_FOLDER/domain2_DOM02.nc" # ICON domain file
 UNSTRUCTURED_GRID="$GRID_FOLDER/unstructured_grid.nc"
-VAR_NAME="SYNMSG_BT_CL_IR10.8,CLCT"  # Variable name to select from GRIB files
+#VAR_NAME="SYNMSG_BT_CL_IR10.8,CLCT"  # Variable name to select from GRIB files
+VAR_NAME="rwmr,snmr,grle"
 # =====================
 
 # Create output folder if missing

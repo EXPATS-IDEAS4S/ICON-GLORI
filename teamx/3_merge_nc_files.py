@@ -9,15 +9,108 @@ merges all files, and saves to output directory.
 import os
 import glob
 import sys
-import gzip
-import shutil
-from pathlib import Path
 
 import xarray as xr
-import numpy as np
+def _to_bool(value):
+    """Parse common truthy/falsey string values into bool."""
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+
+    parsed = str(value).strip().lower()
+    if parsed in {"1", "true", "t", "yes", "y", "on"}:
+        return True
+    if parsed in {"0", "false", "f", "no", "n", "off"}:
+        return False
+    raise ValueError(f"Cannot parse boolean value from: {value}")
 
 
-def merge_nc_files(input_dir, output_dir, variable_name=["SYNMSG_BT_CL_IR10.8"], date="20250401_00"):
+def _merge_variable_subset(datasets_with_var, var_list, output_dir, date):
+    """Merge a subset of variables across datasets and save one output file."""
+    data_vars = []
+    concat_dim = None
+
+    # Determine concat dimension once from first matching dataset.
+    for ds in datasets_with_var:
+        existing_vars = [v for v in var_list if v in ds.data_vars]
+        if not existing_vars:
+            continue
+        candidate = ds[existing_vars]
+        if "time" in candidate.dims:
+            concat_dim = "time"
+        else:
+            concat_dim = list(candidate.dims)[0]
+        break
+
+    if concat_dim is None:
+        print(f"ERROR: Could not determine merge dimension for: {', '.join(var_list)}")
+        return None
+
+    for ds in datasets_with_var:
+        existing_vars = [v for v in var_list if v in ds.data_vars]
+        if existing_vars:
+            subset = ds[existing_vars]
+
+            # Duplicate coordinate values on non-concat dimensions (for example,
+            # vertical "height") can break xarray alignment during concat.
+            # Drop those indexes so concat can stack raw dimension order.
+            index_dims_to_drop = [
+                dim for dim in subset.dims
+                if dim != concat_dim and dim in subset.indexes
+            ]
+            if index_dims_to_drop:
+                subset = subset.drop_indexes(index_dims_to_drop)
+
+            data_vars.append(subset)
+
+    if not data_vars:
+        print(f"ERROR: No datasets with requested variables: {', '.join(var_list)}")
+        return None
+
+    try:
+        merged_ds = xr.concat(
+            data_vars,
+            dim=concat_dim,
+            join="override",
+            coords="minimal",
+            compat="override",
+        )
+        print(f"✓ Merged along '{concat_dim}' dimension")
+    except Exception as e:
+        print(f"ERROR: Failed to merge datasets for {', '.join(var_list)}: {e}")
+        return None
+
+    var_suffix = '_'.join(var_list) if len(var_list) <= 3 else f"{len(var_list)}vars"
+    output_file = os.path.join(output_dir, f"merged_{var_suffix}_{date}.nc")
+
+    print(f"Saving merged file: {output_file}")
+    try:
+        encoding = {
+            var_name: {"zlib": True, "complevel": 9}
+            for var_name in merged_ds.data_vars
+        }
+
+        merged_ds.to_netcdf(
+            output_file,
+            encoding=encoding,
+            unlimited_dims=['time'] if 'time' in merged_ds.dims else None
+        )
+        merged_ds.close()
+        print("✓ File saved successfully with zlib compression (level 9)")
+        return output_file
+    except Exception as e:
+        print(f"ERROR: Failed to save file: {e}")
+        return None
+
+
+def merge_nc_files(
+    input_dir,
+    output_dir,
+    variable_name=["SYNMSG_BT_CL_IR10.8"],
+    date="20250401_00",
+    separate_files_per_variable=False,
+):
     """
     Merge NC files and extract specific variable(s).
     
@@ -44,6 +137,7 @@ def merge_nc_files(input_dir, output_dir, variable_name=["SYNMSG_BT_CL_IR10.8"],
     print(f"Input directory:  {input_dir}")
     print(f"Output directory: {output_dir}")
     print(f"Variables:        {', '.join(var_list)}")
+    print(f"Separate outputs: {separate_files_per_variable}")
     print()
     
     # Check input directory exists
@@ -100,87 +194,45 @@ def merge_nc_files(input_dir, output_dir, variable_name=["SYNMSG_BT_CL_IR10.8"],
     
     print()
     print("Merging datasets...")
-    
-    # Extract requested variables that exist in each dataset
-    data_vars = []
-    for ds in datasets_with_var:
-        # Keep only the variables that exist in this dataset
-        existing_vars = [v for v in var_list if v in ds.data_vars]
-        if existing_vars:
-            var_data = ds[existing_vars]
-            data_vars.append(var_data)
-    
-    # Merge along the first available dimension
-    try:
-        # Try to merge along time dimension (common for climate/weather data)
-        if "time" in data_vars[0].dims:
-            merged_ds = xr.concat(data_vars, dim="time")
-            print(f"✓ Merged along 'time' dimension")
-        else:
-            # Get first dimension
-            first_dim = list(data_vars[0].dims)[0]
-            merged_ds = xr.concat(data_vars, dim=first_dim)
-            print(f"✓ Merged along '{first_dim}' dimension")
-    except Exception as e:
-        print(f"ERROR: Failed to merge datasets: {e}")
-        return False
+
+    output_files = []
+    if separate_files_per_variable:
+        for var in var_list:
+            print()
+            print(f"Merging variable: {var}")
+            merged_output = _merge_variable_subset(datasets_with_var, [var], output_dir, date)
+            if merged_output is None:
+                print(f"ERROR: Failed merge for variable: {var}")
+                for ds in datasets_with_var:
+                    ds.close()
+                return False
+            output_files.append(merged_output)
+    else:
+        merged_output = _merge_variable_subset(datasets_with_var, var_list, output_dir, date)
+        if merged_output is None:
+            for ds in datasets_with_var:
+                ds.close()
+            return False
+        output_files.append(merged_output)
     
     # Close all opened datasets
     for ds in datasets_with_var:
         ds.close()
     
-    # Create output filename
-    var_suffix = '_'.join(var_list) if len(var_list) <= 3 else f"{len(var_list)}vars"
-    output_file = os.path.join(output_dir, f"merged_{var_suffix}_{date}.nc")
-    
     print()
-    print(f"Saving merged file: {output_file}")
-    
-    try:
-        # Apply zlib compression (level 9) to all data variables in the output NetCDF.
-        encoding = {
-            var_name: {"zlib": True, "complevel": 9}
-            for var_name in merged_ds.data_vars
-        }
-
-        merged_ds.to_netcdf(
-            output_file,
-            encoding=encoding,
-            unlimited_dims=['time'] if 'time' in merged_ds.dims else None
-        )
-        merged_ds.close()
-        print("✓ File saved successfully with zlib compression (level 9)")
-    except Exception as e:
-        print(f"ERROR: Failed to save file: {e}")
-        return False
-
-    # # Also create a gzip-compressed copy (.nc.gz) while keeping the .nc file.
-    # gz_output_file = f"{output_file}.gz"
-    # try:
-    #     with open(output_file, "rb") as f_in, gzip.open(gz_output_file, "wb", compresslevel=9) as f_out:
-    #         shutil.copyfileobj(f_in, f_out)
-    #     print(f"✓ Gzip file created: {gz_output_file}")
-    # except Exception as e:
-    #     print(f"ERROR: Failed to create gzip file: {e}")
-    #     return False
-    
     # Print summary
-    print()
     print("=" * 60)
     print("Summary")
     print("=" * 60)
-    print(f"Output file: {output_file}")
-    print(f"File size: {os.path.getsize(output_file) / (1024**2):.2f} MB")
-    #print(f"Gzip file: {gz_output_file}")
-    #print(f"Gzip size: {os.path.getsize(gz_output_file) / (1024**2):.2f} MB")
-    
-    # Show variable info
-    merged_info = xr.open_dataset(output_file)
-    for var in var_list:
-        if var in merged_info.data_vars:
+    for output_file in output_files:
+        print(f"Output file: {output_file}")
+        print(f"File size: {os.path.getsize(output_file) / (1024**2):.2f} MB")
+
+        merged_info = xr.open_dataset(output_file)
+        for var in merged_info.data_vars:
             print(f"{var} shape: {merged_info[var].shape}")
             print(f"{var} dtype: {merged_info[var].dtype}")
-    merged_info.close()
+        merged_info.close()
     print()
     
     return True
@@ -189,7 +241,7 @@ def merge_nc_files(input_dir, output_dir, variable_name=["SYNMSG_BT_CL_IR10.8"],
 if __name__ == "__main__":
     # Check for date argument
     if len(sys.argv) < 2:
-        print("Usage: python 3_merge_nc_files.py <DATE> [INPUT_DIR] [OUTPUT_DIR] [VARIABLE]")
+        print("Usage: python 3_merge_nc_files.py <DATE> [INPUT_DIR] [OUTPUT_DIR] [VARIABLE] [SEPARATE_FILES_PER_VARIABLE]")
         print("Example: python 3_merge_nc_files.py 20250401_00")
         sys.exit(1)
     
@@ -197,9 +249,12 @@ if __name__ == "__main__":
     DATE = sys.argv[1]
     
     # Default paths based on date
-    INPUT_DIR = f"/sat_data/icon_teamx/grib_tmp/{DATE}/nc_tmp"
-    OUTPUT_DIR = f"/sat_data/icon_teamx/nc_tmp/{DATE}"
-    VARIABLE = ["SYNMSG_BT_CL_IR10.8", "CLCT"]  # List of variable names to extract (can be modified as needed)
+    INPUT_DIR = f"/sat_data/icon/icon_teamx/grib_tmp/{DATE}/nc_tmp"
+    OUTPUT_DIR = f"/sat_data/icon/icon_teamx/nc_tmp/{DATE}"
+    VARIABLE = ["rwmr", "snmr", "grle"]  # List of variable names to extract (can be modified as needed)
+    CONFIG = {
+        "SEPARATE_FILES_PER_VARIABLE": True,
+    }
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
@@ -210,7 +265,15 @@ if __name__ == "__main__":
         OUTPUT_DIR = sys.argv[3]
     if len(sys.argv) > 4:
         VARIABLE = sys.argv[4]
+    if len(sys.argv) > 5:
+        CONFIG["SEPARATE_FILES_PER_VARIABLE"] = _to_bool(sys.argv[5])
     
     print(f"Processing date: {DATE}")
-    success = merge_nc_files(INPUT_DIR, OUTPUT_DIR, VARIABLE, DATE)
+    success = merge_nc_files(
+        INPUT_DIR,
+        OUTPUT_DIR,
+        VARIABLE,
+        DATE,
+        separate_files_per_variable=CONFIG["SEPARATE_FILES_PER_VARIABLE"],
+    )
     sys.exit(0 if success else 1)

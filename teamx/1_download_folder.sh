@@ -12,7 +12,7 @@ if [ -z "$1" ]; then
 fi
 
 REMOTE_DIR="/$1"  # Remote folder to download
-OUTPUT_DIR="/sat_data/icon_teamx/grib_tmp/$1"  # Local folder to save downloaded files
+OUTPUT_DIR="/sat_data/icon/icon_teamx/grib_tmp/$1"  # Local folder to save downloaded files
 # --------------------------
 
 mkdir -p "$OUTPUT_DIR"

@@ -34,7 +34,7 @@ try:
     import sys
 
     sys.path.append("/home/Daniele/codes/ICON-GLORI")
-    from credentials_buckets import (
+    from credentials_buckets_old import (
         S3_ACCESS_KEY,
         S3_BUCKET_ICON_D2,
         S3_BUCKET_ICON_EU,

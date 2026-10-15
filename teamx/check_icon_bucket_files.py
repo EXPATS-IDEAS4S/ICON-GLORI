@@ -17,11 +17,11 @@ from credentials_buckets import (
 # Settings
 START_DATE = "2025-04-01"
 END_DATE = "2025-09-30"
-BASENAME = "merged_SYNMSG_BT_CL_IR10.8_CLCT"
-INIT_HOURS = ["00"]
-OUTPUT_REPORT = "icon_bucket_check_report.txt"
+BASENAME = "merged_4vars"
+INIT_HOURS = ["00", "12"]
+OUTPUT_REPORT = "icon_bucket_check_report_4vars.txt"
 FULL_LOAD = False
-EXPECTED_VARS = ["SYNMSG_BT_CL_IR10.8", "CLCT"]
+EXPECTED_VARS = ["tcwv", "TQC", "TQI", "tp"]
 EXPECTED_TIMESTAMPS = 48  # 48 hourly steps
 
 
@@ -137,3 +137,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#2364787
